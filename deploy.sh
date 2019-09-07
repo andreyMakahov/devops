@@ -14,12 +14,16 @@ echo '--------'
 export TAG_BASE=makakhov/nodejs
 export TAG=$TAG_BASE:${version}
 
+
 # add a label with the version. We're using a new file, because we are going to push the changes to git,
 # and we don't want to modify the original Dockerfile.
 cp Dockerfile.production Dockerfile
 
 # Building the image (we don't nee the -f, because Dockerfile is the default):
-docker build -t $TAG --no-cache --build-arg VERSION=$version.
+docker build -t $TAG --no-cache --build-arg VERSION=$version .
+
+echo $TAG
+echo '--------'
 
 # Adding a local tag to the new image, for the test image's FROM:
 # docker tag $TAG calcolator
