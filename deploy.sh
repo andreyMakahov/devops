@@ -1,8 +1,14 @@
 # Update the version in the package.json file and start a new git tag. The version variable contains the new version.
 git_tag=`npm version prerelease`
 
+echo ${git_tag}
+echo '--------'
+
 #remove the 'v' prefix from the version string
 version=${git_tag:1}
+
+echo ${version}
+echo '--------'
 
 # Prepare the image prodution image name, with the new version.
 export TAG_BASE=makakhov/nodejs
