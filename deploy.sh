@@ -46,5 +46,5 @@ git push --follow-tags
 docker push $TAG
 
 # [optional, based on the deployment policies] push the latest tag for this image:
-docker tag $TAG $BASE_TAG:latest
-docker push $BASE_TAG:latest
+# docker tag $TAG $TAG_BASE:latest
+# docker push $TAG_BASE:latest
