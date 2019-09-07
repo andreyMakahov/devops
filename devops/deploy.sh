@@ -8,10 +8,7 @@ version=${git_tag:1}
 export TAG_BASE=makakhov/nodejs
 export TAG=$TAG_BASE:${version}
 
-# Building the image (we don't nee the -f, because Dockerfile is the default):
-docker build -t $TAG -f Dockerfile.production --no-cache --build-arg VERSION=$version ../
-
-docker tag $TAG
+docker build -t makakhov/nodejs:1.0.0  -f Dockerfile.production ../
 
 # Adding a local tag to the new image, for the test image's FROM:
 # docker tag $TAG calcolator
