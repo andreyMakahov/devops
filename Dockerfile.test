@@ -1,0 +1,22 @@
+FROM cypress/included:3.4.1
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
+COPY cypress.json ./
+
+# Copy the test files
+COPY cypress cypress
+
+# Override the NODE_ENV environment variable to 'dev', in order to get required test packages
+ENV NODE_ENV dev
+
+RUN npm install
+
+# Override the command, to run the test instead of the application
+CMD ["npm", "test"]
